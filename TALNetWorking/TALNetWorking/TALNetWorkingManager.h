@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 @class TALNetWorkingFormData;
+@class TALNetWorkingRequestSerialize;
+@class TALNetWorkingResponseSerialize;
+
 @interface TALNetWorkingManager : NSObject
 
 /**
@@ -58,6 +61,17 @@ typedef NS_ENUM(NSUInteger, TALHTTPMethod) {
     TALHTTPMethodPUT,
     TALHTTPMethodDELETE,
 };
+
+/**
+ Serialize for the request
+ */
+@property (strong, nonatomic) TALNetWorkingRequestSerialize *requestSerialize;
+
+/**
+ Serializer for the response
+ */
+@property (strong, nonatomic) TALNetWorkingResponseSerialize *responseSerialize;
+
 /**
  Singleton
 
