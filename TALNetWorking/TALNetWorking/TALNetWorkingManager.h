@@ -11,22 +11,30 @@
 @interface TALNetWorkingManager : NSObject
 
 /**
- 请求返回的结果回调
+ Request result
 
  @param request 请求
- @param data 请求返回的数据
- @param error 请求返回的错误
+ @param data data from server
+ @param error error created when requesting
  */
 typedef void(^RequestResult)(NSURLRequest *request, NSData *data, NSError *error);
 
 /**
- 上传进度回调
+ Upload progress callback
 
- 注：进度最大值为1!
- @param progress 进度
+ PS:total progress is 1
+ @param progress upload progress
  */
 typedef void(^UploadProgress)(double progress);
 
+/**
+ Error Code
+
+ - TALNetWorkingURLError: URL error
+ - TALNetworkingNetError: NO network error
+ - TALNetWorkingTimeoutError: timeout error
+ - TALNetWorkingNoError: no error
+ */
 typedef NS_ENUM(NSUInteger, TALNetWorkingError) {
     TALNetWorkingURLError = -1000,
     TALNetworkingNetError,
@@ -35,13 +43,13 @@ typedef NS_ENUM(NSUInteger, TALNetWorkingError) {
 };
 
 /**
- 请求的HTTP方法
+ HTTP Method Enumer
 
- - TALHTTPMethodGET: GET方法
- - TALHTTPMethodPOST: POST方法
- - TALHTTPMethodHEAD: HEAD方法
- - TALHTTPMethodPUT: PUT方法
- - TALHTTPMethodDELETE: DELETE方法
+ - TALHTTPMethodGET: GET
+ - TALHTTPMethodPOST: POST
+ - TALHTTPMethodHEAD: HEAD
+ - TALHTTPMethodPUT: PUT
+ - TALHTTPMethodDELETE: DELETE
  */
 typedef NS_ENUM(NSUInteger, TALHTTPMethod) {
     TALHTTPMethodGET = 1,
@@ -51,21 +59,21 @@ typedef NS_ENUM(NSUInteger, TALHTTPMethod) {
     TALHTTPMethodDELETE,
 };
 /**
- 单例
+ Singleton
 
- @return 实例
+ @return instance of TALNetWorkingManager
  */
 + (instancetype)sharedManager;
 
 /**
- 向服务器请求
+ Request to server
 
- method参数是设置请求方法的参数
+ parament 'method' is HTTP method
   
- @param url 请求的url
- @param method 方法
- @param parament 请求参数
- @param result 返回的结果
+ @param url server url
+ @param method HTTP method
+ @param parament data send to server
+ @param result request result
  */
 - (void)request:(NSString *)url
   requestMethod:(TALHTTPMethod)method
@@ -73,13 +81,13 @@ typedef NS_ENUM(NSUInteger, TALHTTPMethod) {
          result:(RequestResult)result;
 
 /**
- 上传文件
+ upload files
 
- @param url 上传的url
- @param parament 上传的非文件数据
- @param blk  将要传输的文件按照
- @param progress 上传进度
- @param result 上传结果
+ @param url server url
+ @param parament non-file datas
+ @param blk  file data call back
+ @param progress upload progress
+ @param result upload result
  */
 - (void)upload:(NSString *)url
       parament:(id)parament

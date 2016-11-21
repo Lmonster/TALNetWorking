@@ -11,6 +11,8 @@
 		BA6255581DE2C47B00306ECA /* TALNetWorkingReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6255561DE2C47A00306ECA /* TALNetWorkingReachability.m */; };
 		BA62555B1DE2C5B100306ECA /* TALNetWorkingSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = BA6255591DE2C5B100306ECA /* TALNetWorkingSessionManager.h */; };
 		BA62555C1DE2C5B100306ECA /* TALNetWorkingSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BA62555A1DE2C5B100306ECA /* TALNetWorkingSessionManager.m */; };
+		BA62555F1DE2D31F00306ECA /* TALNetWorkingFormData.h in Headers */ = {isa = PBXBuildFile; fileRef = BA62555D1DE2D31F00306ECA /* TALNetWorkingFormData.h */; };
+		BA6255601DE2D31F00306ECA /* TALNetWorkingFormData.m in Sources */ = {isa = PBXBuildFile; fileRef = BA62555E1DE2D31F00306ECA /* TALNetWorkingFormData.m */; };
 		BA838ACD1DE292B10058C4CD /* TALNetWorking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA838AC31DE292B10058C4CD /* TALNetWorking.framework */; };
 		BA838AD21DE292B10058C4CD /* TALNetWorkingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA838AD11DE292B10058C4CD /* TALNetWorkingTests.m */; };
 		BA838AD41DE292B10058C4CD /* TALNetWorking.h in Headers */ = {isa = PBXBuildFile; fileRef = BA838AC61DE292B10058C4CD /* TALNetWorking.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -35,6 +37,8 @@
 		BA6255561DE2C47A00306ECA /* TALNetWorkingReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TALNetWorkingReachability.m; sourceTree = "<group>"; };
 		BA6255591DE2C5B100306ECA /* TALNetWorkingSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TALNetWorkingSessionManager.h; sourceTree = "<group>"; };
 		BA62555A1DE2C5B100306ECA /* TALNetWorkingSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TALNetWorkingSessionManager.m; sourceTree = "<group>"; };
+		BA62555D1DE2D31F00306ECA /* TALNetWorkingFormData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TALNetWorkingFormData.h; sourceTree = "<group>"; };
+		BA62555E1DE2D31F00306ECA /* TALNetWorkingFormData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TALNetWorkingFormData.m; sourceTree = "<group>"; };
 		BA838AC31DE292B10058C4CD /* TALNetWorking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TALNetWorking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA838AC61DE292B10058C4CD /* TALNetWorking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TALNetWorking.h; sourceTree = "<group>"; };
 		BA838AC71DE292B10058C4CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -114,6 +118,8 @@
 				BA6255561DE2C47A00306ECA /* TALNetWorkingReachability.m */,
 				BA6255591DE2C5B100306ECA /* TALNetWorkingSessionManager.h */,
 				BA62555A1DE2C5B100306ECA /* TALNetWorkingSessionManager.m */,
+				BA62555D1DE2D31F00306ECA /* TALNetWorkingFormData.h */,
+				BA62555E1DE2D31F00306ECA /* TALNetWorkingFormData.m */,
 			);
 			path = TALNetWorking;
 			sourceTree = "<group>";
@@ -127,6 +133,7 @@
 			files = (
 				BA838B241DE2A43A0058C4CD /* TALNetWorkingSerialize.h in Headers */,
 				BA62555B1DE2C5B100306ECA /* TALNetWorkingSessionManager.h in Headers */,
+				BA62555F1DE2D31F00306ECA /* TALNetWorkingFormData.h in Headers */,
 				BA838B1F1DE2987D0058C4CD /* TALNetWorkingManager.h in Headers */,
 				BA838AD41DE292B10058C4CD /* TALNetWorking.h in Headers */,
 				BA6255571DE2C47B00306ECA /* TALNetWorkingReachability.h in Headers */,
@@ -237,6 +244,7 @@
 				BA6255581DE2C47B00306ECA /* TALNetWorkingReachability.m in Sources */,
 				BA838B251DE2A43A0058C4CD /* TALNetWorkingSerialize.m in Sources */,
 				BA838B201DE2987D0058C4CD /* TALNetWorkingManager.m in Sources */,
+				BA6255601DE2D31F00306ECA /* TALNetWorkingFormData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

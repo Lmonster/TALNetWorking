@@ -10,4 +10,21 @@
 
 @interface TALNetWorkingReachability : NSObject
 
+/**
+ add network status listener
+ */
++ (void)addNetStatusListener;
+
+/**
+ remove network status listener
+ */
++ (void)removeNetStatusListener;
+
+/**
+ Check if we can reach the Internet currently
+
+ @return returning YES represents we can reach the Internet, otherwise we cann't
+ */
++ (BOOL)canReachToEntherNet;
+
 @end

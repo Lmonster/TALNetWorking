@@ -7,6 +7,7 @@
 //
 
 #import "TALNetWorkingManager.h"
+#import "TALNetWorkingSessionManager.h"
 
 @implementation TALNetWorkingManager
 
@@ -17,6 +18,9 @@
         manager = [TALNetWorkingManager new];
     });
     return manager;
+}
+
+- (void)request:(NSString *)url requestMethod:(TALHTTPMethod)method parament:(id)parament result:(RequestResult)result {
 }
 
 @end
