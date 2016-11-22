@@ -61,21 +61,21 @@
         NSAssert(self.requestSerialize != nil, @"You must assign a request serialize for your request");
         
         request = [self.requestSerialize serializeRequest:request parament:parament];
-        [[TALNetWorkingSessionManager sharedManager] dataTask:request
-                                                       result:^(NSURLRequest *request, NSData *data, NSError *error) {
-                                                           do {
-                                                               if (error) {
-                                                                   
-                                                                   result(request, nil, error);
-                                                                   break;
-                                                                   
-                                                                   NSAssert(self.responseSerialize != nil, @"You must assign a response serialize for your request");
-                                                                   
-                                                                   id resultData = [self.responseSerialize serializeData:data];
-                                                                   result(request, resultData, nil);
-                                                               }
-                                                           } while (0);
-                                                       }];
+        [[TALNetWorkingSessionManager new] dataTask:request
+                                             result:^(NSURLRequest *request, NSData *data, NSError *error) {
+                                                 do {
+                                                     if (error) {
+                                                         
+                                                         result(request, nil, error);
+                                                         break;
+                                                         
+                                                         NSAssert(self.responseSerialize != nil, @"You must assign a response serialize for your request");
+                                                         
+                                                         id resultData = [self.responseSerialize serializeData:data];
+                                                         result(request, resultData, nil);
+                                                     }
+                                                 } while (0);
+                                             }];
     } while (0);
 }
 

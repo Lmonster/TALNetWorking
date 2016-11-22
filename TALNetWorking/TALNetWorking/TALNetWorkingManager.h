@@ -11,6 +11,10 @@
 @class TALNetWorkingRequestSerialize;
 @class TALNetWorkingResponseSerialize;
 
+/**
+ This is class is the only interface of the network request.
+ It can handle data task and upload task
+ */
 @interface TALNetWorkingManager : NSObject
 
 /**
