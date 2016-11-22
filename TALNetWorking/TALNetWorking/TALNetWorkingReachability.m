@@ -54,7 +54,7 @@ static BOOL hasAddListener;
 void createReability() {
     struct sockaddr_in addr;
     bzero(&addr, sizeof(addr));
-    addr.sin_len = sizeof(addr);
+    addr.sin_len    = sizeof(addr);
     addr.sin_family = AF_INET;
     reachabilityRef = SCNetworkReachabilityCreateWithAddress(kCFAllocatorDefault, (const struct sockaddr *) &addr);
 }

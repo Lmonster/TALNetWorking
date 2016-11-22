@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TALMappingTable.h"
 @class TALNetWorkingFormData;
 @class TALNetWorkingRequestSerialize;
 @class TALNetWorkingResponseSerialize;
@@ -33,38 +34,6 @@ typedef void(^RequestResult)(NSURLRequest *request, NSData *data, NSError *error
  @param progress upload progress
  */
 typedef void(^UploadProgress)(double progress);
-
-/**
- Error Code
-
- - TALNetWorkingURLError: URL error
- - TALNetworkingNetError: NO network error
- - TALNetWorkingTimeoutError: timeout error
- - TALNetWorkingNoError: no error
- */
-typedef NS_ENUM(NSUInteger, TALNetWorkingError) {
-    TALNetWorkingURLError = -1000,
-    TALNetworkingNetError,
-    TALNetWorkingTimeoutError,
-    TALNetWorkingNoError = 0,
-};
-
-/**
- HTTP Method Enumer
-
- - TALHTTPMethodGET: GET
- - TALHTTPMethodPOST: POST
- - TALHTTPMethodHEAD: HEAD
- - TALHTTPMethodPUT: PUT
- - TALHTTPMethodDELETE: DELETE
- */
-typedef NS_ENUM(NSUInteger, TALHTTPMethod) {
-    TALHTTPMethodGET = 1,
-    TALHTTPMethodPOST,
-    TALHTTPMethodHEAD,
-    TALHTTPMethodPUT,
-    TALHTTPMethodDELETE,
-};
 
 /**
  Serialize for the request

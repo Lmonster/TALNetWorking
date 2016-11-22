@@ -106,7 +106,7 @@
         self.uploadTaskCallback(task.originalRequest, self.uploadResponseData, error);
         self.uploadTaskCallback = nil;
         self.uploadResponseData = nil;
-        self.progressBlk = nil;
+        self.progressBlk        = nil;
     }
 }
 

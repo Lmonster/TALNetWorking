@@ -6,6 +6,7 @@
 //  Copyright © 2016年 lmonster. All rights reserved.
 //
 
+#import "TALMappingTable.h"
 #import "TALNetWorkingManager.h"
 #import "TALNetWorkingSessionManager.h"
 #import "TALNetWorkingReachability.h"
@@ -32,15 +33,19 @@
         BOOL matchProtocals;
         NSError *resultError;
         NSMutableURLRequest *request;
+        NSString *httpMethod;
         
-        aURL = [NSURL URLWithString:url];
-        request = [NSMutableURLRequest requestWithURL:aURL];
-        scheme = aURL.scheme.lowercaseString;
-        matchProtocals = [self matchProtocals:scheme];
+        aURL            = [NSURL URLWithString:url];
+        request         = [NSMutableURLRequest requestWithURL:aURL];
+        scheme          = aURL.scheme.lowercaseString;
+        matchProtocals  = [self matchProtocals:scheme];
+        httpMethod      = [TALMappingTable map:method];
         
         // First check if the url's protocal is supported by the system
         // we now can only support http/https protocal and the we check if
-        // the net is connected to the Internet if not we call the callback
+        // the net is connected to the Internet if not we call the callback.
+        // Then we check the http method,if method doesn't match any methods we support
+        // return error info.
         // otherwise we serialize the parament sent to server by requestSerialize
         // property if it's not assigned we will use TALSerializeDefault as
         // default.
@@ -55,11 +60,17 @@
             result(request, nil, resultError);
             break;
         }
+        if ( ! httpMethod.length ) {
+            resultError = [self generateError:TALNetWorkingMethodError];
+            result(request, nil, resultError);
+            break;
+        }
         
         // self.requestSerialize MUST NOT be nil
         
         NSAssert(self.requestSerialize != nil, @"You must assign a request serialize for your request");
         
+        request.HTTPMethod = httpMethod;
         request = [self.requestSerialize serializeRequest:request parament:parament];
         [[TALNetWorkingSessionManager new] dataTask:request
                                              result:^(NSURLRequest *request, NSData *data, NSError *error) {
@@ -98,21 +109,19 @@
 - (NSError *)generateError:(TALNetWorkingError)errorCode {
     
     NSDictionary *errorInfo;
-    switch (errorCode) {
-        case TALNetWorkingURLError:
-            errorInfo = @{@"info":@"The protocal you're requested is not support"};
-            break;
-        case TALNetworkingNetError:
-            errorInfo = @{@"info":@""};
-        case TALNetWorkingTimeoutError:
-            errorInfo = @{@"info":@""};
-        case TALNetWorkingNoError:
-            errorInfo = @{@"info":@""};
-        default:
-            break;
-    }
+    NSString *errorDesc;
+    
+    errorDesc = [TALMappingTable map:errorCode];
+    errorInfo = @{@"info":errorDesc};
     NSError *error = [NSError errorWithDomain:@"" code:errorCode userInfo:errorInfo];
     return error;
+}
+
+- (NSString *)switchMethod: (TALHTTPMethod)methodCode {
+    
+    NSString *method;
+    method = [TALMappingTable map:methodCode];
+    return method;
 }
 
 @end

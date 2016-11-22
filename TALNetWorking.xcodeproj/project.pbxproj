@@ -22,6 +22,8 @@
 		BA838AD41DE292B10058C4CD /* TALNetWorking.h in Headers */ = {isa = PBXBuildFile; fileRef = BA838AC61DE292B10058C4CD /* TALNetWorking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BA838B1F1DE2987D0058C4CD /* TALNetWorkingManager.h in Headers */ = {isa = PBXBuildFile; fileRef = BA838B1D1DE2987D0058C4CD /* TALNetWorkingManager.h */; };
 		BA838B201DE2987D0058C4CD /* TALNetWorkingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BA838B1E1DE2987D0058C4CD /* TALNetWorkingManager.m */; };
+		BABC42E61DE42B440014396B /* TALMappingTable.h in Headers */ = {isa = PBXBuildFile; fileRef = BABC42E41DE42B440014396B /* TALMappingTable.h */; };
+		BABC42E71DE42B440014396B /* TALMappingTable.m in Sources */ = {isa = PBXBuildFile; fileRef = BABC42E51DE42B440014396B /* TALMappingTable.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		BA838AD31DE292B10058C4CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA838B1D1DE2987D0058C4CD /* TALNetWorkingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TALNetWorkingManager.h; sourceTree = "<group>"; };
 		BA838B1E1DE2987D0058C4CD /* TALNetWorkingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TALNetWorkingManager.m; sourceTree = "<group>"; };
+		BABC42E41DE42B440014396B /* TALMappingTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TALMappingTable.h; sourceTree = "<group>"; };
+		BABC42E51DE42B440014396B /* TALMappingTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TALMappingTable.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +130,8 @@
 				BA6255621DE2E99A00306ECA /* TALNetWorkingRequestSerialize.m */,
 				BA6255651DE2E9A700306ECA /* TALNetWorkingResponseSerialize.h */,
 				BA6255661DE2E9A700306ECA /* TALNetWorkingResponseSerialize.m */,
+				BABC42E41DE42B440014396B /* TALMappingTable.h */,
+				BABC42E51DE42B440014396B /* TALMappingTable.m */,
 			);
 			path = TALNetWorking;
 			sourceTree = "<group>";
@@ -141,6 +147,7 @@
 				BA62555B1DE2C5B100306ECA /* TALNetWorkingSessionManager.h in Headers */,
 				BA62556B1DE2EAE600306ECA /* TALNetWorkingReachability.h in Headers */,
 				BA62555F1DE2D31F00306ECA /* TALNetWorkingFormData.h in Headers */,
+				BABC42E61DE42B440014396B /* TALMappingTable.h in Headers */,
 				BA6255671DE2E9A700306ECA /* TALNetWorkingResponseSerialize.h in Headers */,
 				BA838B1F1DE2987D0058C4CD /* TALNetWorkingManager.h in Headers */,
 				BA838AD41DE292B10058C4CD /* TALNetWorking.h in Headers */,
@@ -252,6 +259,7 @@
 				BA62556C1DE2EAE600306ECA /* TALNetWorkingReachability.m in Sources */,
 				BA838B201DE2987D0058C4CD /* TALNetWorkingManager.m in Sources */,
 				BA6255641DE2E99A00306ECA /* TALNetWorkingRequestSerialize.m in Sources */,
+				BABC42E71DE42B440014396B /* TALMappingTable.m in Sources */,
 				BA6255601DE2D31F00306ECA /* TALNetWorkingFormData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

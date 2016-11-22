@@ -22,7 +22,7 @@
  
  @return serialize that handle data to plain text
  */
-+ (instancetype)TALPlainTextSerialize;
++ (instancetype)TALHTTPRequestSerialize;
 
 /**
  default serialize
