@@ -63,6 +63,9 @@
         
         self.defaultQueue = [NSOperationQueue new];
         self.uploadResponseData = [NSMutableData data];
+        
+        self.defaultDataSession = [NSURLSession sessionWithConfiguration:dataConfig];
+        self.defaultUploadSession = [NSURLSession sessionWithConfiguration:uploadConfig delegate:self delegateQueue:self.defaultQueue];
     }
     return self;
 }

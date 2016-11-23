@@ -25,7 +25,7 @@
  @param data data from server
  @param error error created when requesting
  */
-typedef void(^RequestResult)(NSURLRequest *request, NSData *data, NSError *error);
+typedef void(^RequestResult)(NSURLRequest *request, id data, NSError *error);
 
 /**
  Upload progress callback

@@ -53,9 +53,11 @@ typedef NS_ENUM(NSInteger, SerializeType) {
     // *
     
     NSData *bodyData;
+    NSString *originURLString;
+    NSString *newURLString;
+    
     bodyData = nil;
-    if ([request.HTTPMethod isEqualToString:@""]) {
-    }
+    originURLString = request.URL.absoluteString;
     switch (self.type) {
         case SerializeDefaultType: {
         }
@@ -97,30 +99,51 @@ typedef NS_ENUM(NSInteger, SerializeType) {
     
     if ([request.HTTPMethod isEqualToString:[TALMappingTable map:TALHTTPMethodGET]] ||
         [request.HTTPMethod isEqualToString:[TALMappingTable map:TALHTTPMethodHEAD]]) {
-    } else if ([request.HTTPMethod isEqualToString:[TALMappingTable map:TALHTTPMethodPOST]]) {
+        
+        NSString *query = [self convertURLQuery:parament];
+        newURLString = [originURLString stringByAppendingString:query];
+        newURLString = [self standardizedURL:newURLString];
+        NSURL *newURL = [NSURL URLWithString:newURLString];
+        if ( !newURL ) NSAssert(NO, @"");
+        else request.URL = [NSURL URLWithString:newURLString];
+        
+    } else {
+        request.HTTPBody = bodyData;
     }
-    request.HTTPBody = bodyData;
     return request;
 }
 
+
 #pragma mark - Serialize parament for GET method
 
+/**
+ convert the parament user provided for the url to query stand
+
+ @param parament parament provided for the url
+ @return the query standed string
+ */
 - (NSString *)convertURLQuery:(id)parament {
     NSMutableString *queryString;
+    __block NSInteger index;
     
     queryString = [NSMutableString stringWithString:@"?"];
+    index       = 0;
     if ([parament isKindOfClass:[NSString class]]) {
         
         [queryString appendString:parament];
         
     } else if ([parament isKindOfClass:[NSDictionary class]]) {
         
+        NSInteger elementCount = [[((NSDictionary *)parament) allKeys] count];
         [parament enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
             
             if ([obj isKindOfClass:[NSString class]] ||
                 [obj isKindOfClass:[NSNumber class]]
                 ) {
-                [queryString appendFormat:@"%@=%@&",key,obj];
+                
+                if ( index != elementCount - 1 ) [queryString appendFormat:@"%@=%@&",key,obj];
+                else [queryString appendFormat:@"%@=%@",key,obj];
+                
             } else if ([obj isKindOfClass:[NSArray class]]) {
                 
                 // Here we don't allow an array as an object.
@@ -132,9 +155,15 @@ typedef NS_ENUM(NSInteger, SerializeType) {
                 
                 NSAssert(NO, @"value cann't be non-dictionary");
             }
+            ++index;
         }];
     }
     return queryString;
+}
+
+- (NSString *)standardizedURL:(NSString *)url {
+    
+    return [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLUserAllowedCharacterSet]];
 }
 
 #pragma mark - Serialize parament for POST/PUT method

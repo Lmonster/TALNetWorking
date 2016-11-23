@@ -6,7 +6,6 @@
 //  Copyright © 2016年 lmonster. All rights reserved.
 //
 
-#import "TALMappingTable.h"
 #import "TALNetWorkingManager.h"
 #import "TALNetWorkingSessionManager.h"
 #import "TALNetWorkingReachability.h"
@@ -41,7 +40,7 @@
         matchProtocals  = [self matchProtocals:scheme];
         httpMethod      = [TALMappingTable map:method];
         
-        // First check if the url's protocal is supported by the system
+        // First check if the url's protocal is supported by the system nor the url string is right
         // we now can only support http/https protocal and the we check if
         // the net is connected to the Internet if not we call the callback.
         // Then we check the http method,if method doesn't match any methods we support
@@ -50,16 +49,16 @@
         // property if it's not assigned we will use TALSerializeDefault as
         // default.
         
-        if ( ! matchProtocals ) {
+        if ( ! matchProtocals && ! aURL) {
             resultError = [self generateError:TALNetWorkingURLError];
             result(request, nil, resultError);
             break;
         }
-        if ( ! [TALNetWorkingReachability canReachToEntherNet] ) {
-            resultError = [self generateError:TALNetworkingNetError];
-            result(request, nil, resultError);
-            break;
-        }
+//        if ( ! [TALNetWorkingReachability canReachToEntherNet] ) {
+//            resultError = [self generateError:TALNetworkingNetError];
+//            result(request, nil, resultError);
+//            break;
+//        }
         if ( ! httpMethod.length ) {
             resultError = [self generateError:TALNetWorkingMethodError];
             result(request, nil, resultError);
@@ -79,6 +78,7 @@
                                                          
                                                          result(request, nil, error);
                                                          break;
+                                                     } else {
                                                          
                                                          NSAssert(self.responseSerialize != nil, @"You must assign a response serialize for your request");
                                                          

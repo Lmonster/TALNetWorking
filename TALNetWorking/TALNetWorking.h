@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TALNetWorkingManager.h"
 
 //! Project version number for TALNetWorking.
 FOUNDATION_EXPORT double TALNetWorkingVersionNumber;

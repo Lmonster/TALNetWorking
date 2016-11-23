@@ -10,7 +10,7 @@
 
 /**
  This class is the project public code mapping.And the code rule is as following:
- 1. Net Error -1000 ...
+ 1. Net Error 2000 ...
  2. HTTP Method 1000 ...
  */
 @interface TALMappingTable : NSObject
@@ -24,7 +24,7 @@
  - TALNetWorkingNoError: no error
  */
 typedef NS_ENUM(NSUInteger, TALNetWorkingError) {
-    TALNetWorkingURLError = -1000,
+    TALNetWorkingURLError = 2000,
     TALNetworkingNetError,
     TALNetWorkingTimeoutError,
     TALNetWorkingMethodError,
