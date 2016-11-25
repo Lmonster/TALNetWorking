@@ -54,11 +54,11 @@
             result(request, nil, resultError);
             break;
         }
-//        if ( ! [TALNetWorkingReachability canReachToEntherNet] ) {
-//            resultError = [self generateError:TALNetworkingNetError];
-//            result(request, nil, resultError);
-//            break;
-//        }
+        if ( ! [TALNetWorkingReachability canReachToEntherNet] ) {
+            resultError = [self generateError:TALNetworkingNetError];
+            result(request, nil, resultError);
+            break;
+        }
         if ( ! httpMethod.length ) {
             resultError = [self generateError:TALNetWorkingMethodError];
             result(request, nil, resultError);

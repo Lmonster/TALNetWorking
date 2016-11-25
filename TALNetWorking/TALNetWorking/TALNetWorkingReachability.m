@@ -22,10 +22,12 @@ static BOOL hasAddListener;
 
 + (BOOL)canReachToEntherNet {
 
+    SCNetworkReachabilityFlags flag;
+    
     if ( ! reachability ) {
         createReability();
     }
-    SCNetworkReachabilityFlags flag = SCNetworkReachabilityGetFlags(reachabilityRef, &flag);
+    SCNetworkReachabilityGetFlags(reachabilityRef, &flag);
     
     return flag & kSCNetworkReachabilityFlagsReachable;
 }
